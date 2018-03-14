@@ -15,7 +15,7 @@ public class EmployeeDatabase {
     /**
      * List of employees.
      */
-    public List<Employee> employees;
+    private List<Employee> employees;
 
     /**
      * Constructor which initializes the employees list.
@@ -30,8 +30,8 @@ public class EmployeeDatabase {
     /**
      * Returns the manager for the given employee.
      *
-     * @param employee
-     * @return
+     * @param employee the employee
+     * @return 0
      */
     Employee findManager(final Employee employee) {
         Employee manager = null;
@@ -56,6 +56,10 @@ public class EmployeeDatabase {
         /*
          * Implement this function
          */
+        if (findManager(employee) == null) {
+            return 0;
+        }
+        return 1 + countManagersAbove(findManager(employee));
     }
 
     /**
@@ -70,6 +74,10 @@ public class EmployeeDatabase {
         /*
          * Implement this function
          */
+        if (findManager(employee) == null) {
+            return 0;
+        }
+        return 1 + countEmployeesUnder(findManager(employee));
     }
 
     /**
